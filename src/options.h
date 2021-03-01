@@ -43,6 +43,7 @@ struct __scrotoptions
    int select;
    int focused;
    int quality;
+   int blur;
    int border;
    int silent;
    int multidisp;

@@ -52,6 +52,7 @@ init_parse_options(int argc, char **argv)
    memset(&opt, 0, sizeof(scrotoptions));
 
    opt.quality = 75;
+   opt.blur = 0;
    opt.overwrite = 0;
    opt.line_style = LineSolid;
    opt.line_width = 1;
@@ -218,7 +219,7 @@ static void options_parse_window_class_name(const char* window_class_name)
 static void
 scrot_parse_option_array(int argc, char **argv)
 {
-   static char stropts[] = "a:ofpbcd:e:hmq:st:uv+:zn:l:D:kC:";
+   static char stropts[] = "a:ofpbcd:e:hmq:st:uv+:zn:l:D:kC:B:";
 
    static struct option lopts[] = {
       /* actions */
@@ -238,6 +239,7 @@ scrot_parse_option_array(int argc, char **argv)
       /* toggles */
       {"thumb", 1, 0, 't'},
       {"delay", 1, 0, 'd'},
+      {"blur", 1, 0, 'B'},
       {"quality", 1, 0, 'q'},
       {"exec", 1, 0, 'e'},
       {"debug-level", 1, 0, '+'},
@@ -266,6 +268,9 @@ scrot_parse_option_array(int argc, char **argv)
            break;
         case 'b':
            opt.border = 1;
+           break;
+        case 'B':
+           opt.blur = options_parse_required_number(optarg);
            break;
         case 'd':
            opt.delay = options_parse_required_number(optarg);
