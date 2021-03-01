@@ -102,7 +102,6 @@ main(int argc,
   if (opt.blur != 0) {
     imlib_context_set_image(image);
     imlib_image_blur(opt.blur);
-    fprintf(stdout, "Blurred the image with %d\n", opt.blur);
   }
 
   if (opt.note != NULL)
